@@ -124,11 +124,14 @@
     });
   }
 
-  /* ---------- Karte erst zeichnen, wenn sie ins Bild kommt ---------- */
+  /* ---------- Einblenden beim Scrollen; die Karte zeichnet sich erst dann ---------- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
+      var shown = 0;
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
+        // was gleichzeitig ins Bild kommt, leicht versetzt
+        entry.target.style.transitionDelay = Math.min(shown++, 5) * 70 + 'ms';
         entry.target.classList.add('is-in');
         io.unobserve(entry.target);
       });

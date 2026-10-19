@@ -11,9 +11,10 @@
   <meta name="format-detection" content="telephone=no">
   <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+  <link rel="preload" href="assets/fonts/bodoni.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/hero-480.avif 480w, assets/img/hero-800.avif 800w, assets/img/hero-1200.avif 1200w" imagesizes="(min-width: 1024px) 46vw, 100vw" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/style.min.css?v=9e67fc12">
+  <link rel="stylesheet" href="assets/css/style.min.css?v=2d11e953">
   <script>
     (function (c) {
       c.add('js');
@@ -111,7 +112,7 @@
     <section class="hero" id="hero">
       <div class="container hero__inner">
         <div class="hero__content">
-          <h1 class="hero__title">Klavier- und Spezial&shy;transporte aus Essen</h1>
+          <h1 class="hero__title">Klavier&shy;transport in sicheren Händen</h1>
           <p class="hero__lead">Wir transportieren Klaviere, Flügel, Tresore und andere schwere Güter. Seit über 15&nbsp;Jahren, mit geschultem Team und doppelter Versicherung für Instrument und Gebäude.</p>
           <div class="hero__cta" id="hero-cta">
             <a class="btn btn--primary btn--lg" href="#anfrage">Angebot anfordern</a>
@@ -125,13 +126,8 @@
         </figure>
       </div>
 
-      <!-- Unterkante wie bei einem Klavier: Tastenklappe mit Schriftzug, Filzleiste, Tasten -->
       <div class="keys-wrap">
-        <div class="fallboard">
-          <p class="fallboard__decal" aria-hidden="true"><span>Premium</span><small>Klavier- &amp; Spezialtransport · Essen</small></p>
-          <p class="fallboard__hint" aria-hidden="true">Die Tasten lassen sich spielen</p>
-        </div>
-        <div class="felt" aria-hidden="true"></div>
+        <p class="keys__hint" aria-hidden="true">Die Tasten lassen sich spielen.</p>
         <div class="keys" aria-hidden="true"></div>
       </div>
     </section>
@@ -139,13 +135,13 @@
     <!-- LEISTUNGEN -->
     <section class="section section--ivory" id="leistungen">
       <div class="container">
-        <div class="head head--split">
+        <div class="head head--split reveal">
           <h2>Leistungen</h2>
           <p class="head__lead">Für ein Angebot genügt ein Anruf oder die kurze Anfrage weiter unten.</p>
         </div>
 
         <div class="services">
-          <a class="service" href="#anfrage" data-service="fluegel">
+          <a class="service reveal" href="#anfrage" data-service="fluegel">
             <span class="service__media"><picture><source type="image/avif" srcset="assets/img/work-fluegel-team-240.avif 240w, assets/img/work-fluegel-team-480.avif 480w, assets/img/work-fluegel-team-800.avif 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px"><img src="assets/img/work-fluegel-team-480.webp" srcset="assets/img/work-fluegel-team-240.webp 240w, assets/img/work-fluegel-team-480.webp 480w, assets/img/work-fluegel-team-800.webp 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px" width="800" height="600" alt="" loading="lazy" decoding="async"></picture></span>
             <span class="service__body">
               <h3>Flügeltransport</h3>
@@ -153,7 +149,7 @@
               <span class="service__go">Anfragen</span>
             </span>
           </a>
-          <a class="service" href="#anfrage" data-service="klavier">
+          <a class="service reveal" href="#anfrage" data-service="klavier">
             <span class="service__media"><picture><source type="image/avif" srcset="assets/img/work-klavier-rollbrett-240.avif 240w, assets/img/work-klavier-rollbrett-480.avif 480w, assets/img/work-klavier-rollbrett-800.avif 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px"><img src="assets/img/work-klavier-rollbrett-480.webp" srcset="assets/img/work-klavier-rollbrett-240.webp 240w, assets/img/work-klavier-rollbrett-480.webp 480w, assets/img/work-klavier-rollbrett-800.webp 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px" width="800" height="600" alt="" loading="lazy" decoding="async"></picture></span>
             <span class="service__body">
               <h3>Klaviertransport</h3>
@@ -161,7 +157,7 @@
               <span class="service__go">Anfragen</span>
             </span>
           </a>
-          <a class="service" href="#anfrage" data-service="tresor">
+          <a class="service reveal" href="#anfrage" data-service="tresor">
             <span class="service__media"><picture><source type="image/avif" srcset="assets/img/work-tresor-kran-240.avif 240w, assets/img/work-tresor-kran-480.avif 480w, assets/img/work-tresor-kran-800.avif 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px"><img src="assets/img/work-tresor-kran-480.webp" srcset="assets/img/work-tresor-kran-240.webp 240w, assets/img/work-tresor-kran-480.webp 480w, assets/img/work-tresor-kran-800.webp 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px" width="800" height="600" alt="" loading="lazy" decoding="async"></picture></span>
             <span class="service__body">
               <h3>Tresortransport</h3>
@@ -169,7 +165,7 @@
               <span class="service__go">Anfragen</span>
             </span>
           </a>
-          <a class="service" href="#anfrage" data-service="spezial">
+          <a class="service reveal" href="#anfrage" data-service="spezial">
             <span class="service__media"><picture><source type="image/avif" srcset="assets/img/work-treppenhaus-240.avif 240w, assets/img/work-treppenhaus-480.avif 480w, assets/img/work-treppenhaus-800.avif 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px"><img src="assets/img/work-treppenhaus-480.webp" srcset="assets/img/work-treppenhaus-240.webp 240w, assets/img/work-treppenhaus-480.webp 480w, assets/img/work-treppenhaus-800.webp 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px" width="800" height="600" alt="" loading="lazy" decoding="async"></picture></span>
             <span class="service__body">
               <h3>Spezialtransporte</h3>
@@ -177,7 +173,7 @@
               <span class="service__go">Anfragen</span>
             </span>
           </a>
-          <a class="service" href="#anfrage" data-service="lackierung">
+          <a class="service reveal" href="#anfrage" data-service="lackierung">
             <span class="service__media"><picture><source type="image/avif" srcset="assets/img/work-lackierung-240.avif 240w, assets/img/work-lackierung-480.avif 480w, assets/img/work-lackierung-800.avif 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px"><img src="assets/img/work-lackierung-480.webp" srcset="assets/img/work-lackierung-240.webp 240w, assets/img/work-lackierung-480.webp 480w, assets/img/work-lackierung-800.webp 800w" sizes="(min-width: 1024px) 400px, (min-width: 600px) 45vw, 96px" width="800" height="600" alt="" loading="lazy" decoding="async"></picture></span>
             <span class="service__body">
               <h3>Klavierlackierung</h3>
@@ -185,7 +181,7 @@
               <span class="service__go">Anfragen</span>
             </span>
           </a>
-          <div class="service service--more">
+          <div class="service service--more reveal">
             <h3>Außerdem</h3>
             <ul class="more">
               <li><a href="#anfrage" data-service="entsorgung">Entsorgung alter Klaviere, Flügel und Tresore</a></li>
@@ -369,14 +365,14 @@
     <section class="section section--dark" id="vorteile">
       <div class="container">
         <div class="why">
-          <figure class="why__photo"><picture><source type="image/avif" srcset="assets/img/team-480.avif 480w, assets/img/team-720.avif 720w" sizes="(min-width: 1024px) 480px, calc(100vw - 40px)"><img src="assets/img/team-720.webp" srcset="assets/img/team-480.webp 480w, assets/img/team-720.webp 720w" sizes="(min-width: 1024px) 480px, calc(100vw - 40px)" width="720" height="900" alt="Mitarbeiter im roten Premium-Shirt arbeitet an einem geöffneten Klavier" loading="lazy" decoding="async"></picture></figure>
+          <figure class="why__photo reveal"><picture><source type="image/avif" srcset="assets/img/team-480.avif 480w, assets/img/team-720.avif 720w" sizes="(min-width: 1024px) 480px, calc(100vw - 40px)"><img src="assets/img/team-720.webp" srcset="assets/img/team-480.webp 480w, assets/img/team-720.webp 720w" sizes="(min-width: 1024px) 480px, calc(100vw - 40px)" width="720" height="900" alt="Mitarbeiter im roten Premium-Shirt arbeitet an einem geöffneten Klavier" loading="lazy" decoding="async"></picture></figure>
 
           <div class="why__body">
-            <div class="head">
+            <div class="head reveal">
               <h2>Ihre Vorteile</h2>
               <p class="head__lead">Ihr Klavier wurde vom Profi gebaut. Transportiert werden sollte es auch vom Profi.</p>
             </div>
-            <ul class="features">
+            <ul class="features reveal">
               <li class="feature"><h3>Doppelt versichert</h3><p>Eine Versicherung deckt Ihr Instrument ab, eine zweite Schäden an Wänden, Böden und Gebäude.</p></li>
               <li class="feature"><h3>Über 15 Jahre Erfahrung</h3><p>Enge Treppenhäuser, mehrere Etagen oder ein Kraneinsatz gehören für uns dazu.</p></li>
               <li class="feature"><h3>Geschultes Team</h3><p>Speziell für Klaviertransporte ausgebildet und regelmäßig geschult.</p></li>
@@ -392,7 +388,7 @@
     <!-- EINBLICKE -->
     <section class="section section--ivory" id="einblicke">
       <div class="container gallery__head">
-        <div class="head">
+        <div class="head reveal">
           <h2>Bilder aus unserem Alltag</h2>
         </div>
         <div class="gallery__ctrl" aria-hidden="true">
@@ -400,7 +396,7 @@
           <button class="iconbtn iconbtn--line" type="button" data-gal="1" tabindex="-1"><svg class="icon"><use href="#i-right"/></svg></button>
         </div>
       </div>
-      <div class="gallery" id="gallery" role="region" aria-label="Bilder aus unserer Arbeit" tabindex="0">
+      <div class="gallery reveal" id="gallery" role="region" aria-label="Bilder aus unserer Arbeit" tabindex="0">
         <figure class="shot"><button type="button" class="shot__btn" aria-label="Bild vergrößern: Flügel auf der Seite, verpackt auf dem Flügelbrett"><picture><source type="image/avif" srcset="assets/img/work-fluegel-team-480.avif 480w, assets/img/work-fluegel-team-800.avif 800w" sizes="(min-width: 1024px) 500px, (min-width: 600px) 60vw, 82vw"><img src="assets/img/work-fluegel-team-800.webp" srcset="assets/img/work-fluegel-team-480.webp 480w, assets/img/work-fluegel-team-800.webp 800w" sizes="(min-width: 1024px) 500px, (min-width: 600px) 60vw, 82vw" width="800" height="600" alt="Flügel liegt in Folie verpackt auf der Seite auf einem fahrbaren Flügelbrett" loading="lazy" decoding="async" data-full="assets/img/work-fluegel-team-800.webp"></picture></button><figcaption>Flügel auf dem Flügelbrett</figcaption></figure>
         <figure class="shot"><button type="button" class="shot__btn" aria-label="Bild vergrößern: Klavier auf dem Weg zum Kunden"><picture><source type="image/avif" srcset="assets/img/work-klavier-rollbrett-480.avif 480w, assets/img/work-klavier-rollbrett-800.avif 800w" sizes="(min-width: 1024px) 500px, (min-width: 600px) 60vw, 82vw"><img src="assets/img/work-klavier-rollbrett-800.webp" srcset="assets/img/work-klavier-rollbrett-480.webp 480w, assets/img/work-klavier-rollbrett-800.webp 800w" sizes="(min-width: 1024px) 500px, (min-width: 600px) 60vw, 82vw" width="800" height="600" alt="Klavier auf einem Rollbrett vor dem Transporter" loading="lazy" decoding="async" data-full="assets/img/work-klavier-rollbrett-800.webp"></picture></button><figcaption>Klavier auf dem Weg zum Kunden</figcaption></figure>
         <figure class="shot"><button type="button" class="shot__btn" aria-label="Bild vergrößern: Flügel wird angehoben"><picture><source type="image/avif" srcset="assets/img/work-fluegel-verpackt-480.avif 480w, assets/img/work-fluegel-verpackt-800.avif 800w" sizes="(min-width: 1024px) 500px, (min-width: 600px) 60vw, 82vw"><img src="assets/img/work-fluegel-verpackt-800.webp" srcset="assets/img/work-fluegel-verpackt-480.webp 480w, assets/img/work-fluegel-verpackt-800.webp 800w" sizes="(min-width: 1024px) 500px, (min-width: 600px) 60vw, 82vw" width="800" height="600" alt="Mitarbeiter hebt einen in Folie verpackten Flügel mit einem Hubgerät an" loading="lazy" decoding="async" data-full="assets/img/work-fluegel-verpackt-800.webp"></picture></button><figcaption>Flügel sicher angehoben</figcaption></figure>
@@ -414,7 +410,7 @@
     <!-- EINSATZGEBIET -->
     <section class="section section--dark area" id="einsatzgebiet">
       <div class="container area__grid">
-        <div class="head">
+        <div class="head reveal">
           <h2>Einsatzgebiet</h2>
           <p class="head__lead">Unser Standort ist Essen, Schwerpunkt sind Nordrhein-Westfalen, Rheinland-Pfalz und Hessen. Auf Anfrage fahren wir bundesweit.</p>
         </div>
@@ -436,7 +432,7 @@
           </ul>
         </figure>
 
-        <ul class="regions">
+        <ul class="regions reveal">
           <li class="region region--home" data-region="nw"><i class="region__mark"></i><strong>Nordrhein-Westfalen</strong><small>Standort Essen</small></li>
           <li class="region" data-region="rp"><i class="region__mark"></i><strong>Rheinland-Pfalz</strong><small>Kerngebiet</small></li>
           <li class="region" data-region="he"><i class="region__mark"></i><strong>Hessen</strong><small>Kerngebiet</small></li>
@@ -449,13 +445,13 @@
     <section class="section section--black quote" id="anfrage">
       <div class="container quote__grid">
         <div class="quote__side">
-          <div class="head">
+          <div class="head reveal">
             <h2>Angebot anfordern</h2>
             <p class="head__lead">Fünf kurze Fragen, dann melden wir uns mit einem unverbindlichen Angebot. Lieber telefonieren? <a class="link" href="tel:+4920145863256">0201&nbsp;45&nbsp;86&nbsp;32&nbsp;56</a></p>
           </div>
 
           <!-- Frachtbrief: fasst die Anfrage live zusammen -->
-          <div class="ticket" id="ticket" aria-hidden="true">
+          <div class="ticket reveal" id="ticket" aria-hidden="true">
             <div class="ticket__top">
               <span>Frachtbrief</span>
               <span class="ticket__no" data-t="no">PK-0000</span>
@@ -480,7 +476,7 @@
           </div>
         </div>
 
-        <form class="wiz" id="anfrage-form" action="#" method="post" novalidate>
+        <form class="wiz reveal" id="anfrage-form" action="#" method="post" novalidate>
           <div class="wiz__top">
             <p class="wiz__count" aria-live="polite">Schritt <span data-step-num>1</span> von <span data-step-total>5</span><span class="wiz__name" data-step-name>Objekt</span></p>
             <div class="wiz__progress" aria-hidden="true"><i></i></div>
@@ -622,12 +618,12 @@
     <section class="section section--ivory" id="faq">
       <div class="container faq">
         <div class="faq__side">
-          <div class="head">
+          <div class="head reveal">
             <h2>Häufige Fragen</h2>
             <p class="head__lead">Ihre Frage ist nicht dabei? Rufen Sie an: <a class="link" href="tel:+4920145863256">0201&nbsp;45&nbsp;86&nbsp;32&nbsp;56</a></p>
           </div>
         </div>
-        <div class="faq__list">
+        <div class="faq__list reveal">
           <details class="faq__item">
             <summary>Ist mein Instrument beim Transport versichert?<span class="faq__icon" aria-hidden="true"></span></summary>
             <div class="faq__a"><p>Ja. Jeder Klavier- und Flügeltransport ist bei uns doppelt abgesichert. Eine Versicherung schützt Ihr Instrument, eine zweite deckt mögliche Schäden an Wänden, Böden und am Gebäude ab.</p></div>
@@ -664,9 +660,9 @@
     <section class="finale" id="kontakt">
       <div class="container finale__inner">
         <h2 class="finale__title">Kontakt</h2>
-        <a class="finale__phone" href="tel:+4920145863256">0201 45 86 32 56</a>
+        <a class="finale__phone reveal" href="tel:+4920145863256">0201 45 86 32 56</a>
         <p class="finale__status"><span class="status-dot" data-status aria-hidden="true"></span><span data-status-long>Mo–Fr 9–18 Uhr, Sa 10–13 Uhr</span></p>
-        <ul class="finale__list">
+        <ul class="finale__list reveal">
           <li><small>Mobil</small><a href="tel:+4915154847636">0151 54 84 76 36</a></li>
           <li><small>E-Mail</small><a href="mailto:info@premium-klaviertransport.de">info@premium-klaviertransport.de</a></li>
           <li><small>Fax</small><span>0201 45 86 32 55</span></li>
@@ -737,6 +733,6 @@
     <button class="iconbtn lightbox__btn lightbox__next" type="button" aria-label="Nächstes Bild"><svg class="icon"><use href="#i-right"/></svg></button>
   </dialog>
 
-  <script src="assets/js/main.min.js?v=f108817b" defer></script>
+  <script src="assets/js/main.min.js?v=f1f77f8c" defer></script>
 </body>
 </html>
