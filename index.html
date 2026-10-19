@@ -12,8 +12,8 @@
   <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
   <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/hero-480.avif 480w, assets/img/hero-800.avif 800w, assets/img/hero-1200.avif 1200w" imagesizes="(min-width: 1024px) 480px, 100vw" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/style.min.css?v=8c8e021e">
+  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/hero-480.avif 480w, assets/img/hero-800.avif 800w, assets/img/hero-1200.avif 1200w" imagesizes="(min-width: 1024px) 46vw, 100vw" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/style.min.css?v=9e67fc12">
   <script>
     (function (c) {
       c.add('js');
@@ -121,12 +121,17 @@
         </div>
 
         <figure class="hero__photo">
-          <picture><source type="image/avif" srcset="assets/img/hero-480.avif 480w, assets/img/hero-800.avif 800w, assets/img/hero-1200.avif 1200w" sizes="(min-width: 1024px) 480px, 100vw"><img src="assets/img/hero-800.webp" srcset="assets/img/hero-480.webp 480w, assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" sizes="(min-width: 1024px) 480px, 100vw" width="800" height="1000" alt="Historischer, reich verzierter Flügel in einem Ausstellungsraum" fetchpriority="high" decoding="async"></picture>
+          <picture><source type="image/avif" srcset="assets/img/hero-480.avif 480w, assets/img/hero-800.avif 800w, assets/img/hero-1200.avif 1200w" sizes="(min-width: 1024px) 46vw, 100vw"><img src="assets/img/hero-800.webp" srcset="assets/img/hero-480.webp 480w, assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" sizes="(min-width: 1024px) 46vw, 100vw" width="800" height="1000" alt="Historischer, reich verzierter Flügel in einem Ausstellungsraum" fetchpriority="high" decoding="async"></picture>
         </figure>
       </div>
 
+      <!-- Unterkante wie bei einem Klavier: Tastenklappe mit Schriftzug, Filzleiste, Tasten -->
       <div class="keys-wrap">
-        <p class="keys__hint" aria-hidden="true">Die Tasten lassen sich spielen.</p>
+        <div class="fallboard">
+          <p class="fallboard__decal" aria-hidden="true"><span>Premium</span><small>Klavier- &amp; Spezialtransport · Essen</small></p>
+          <p class="fallboard__hint" aria-hidden="true">Die Tasten lassen sich spielen</p>
+        </div>
+        <div class="felt" aria-hidden="true"></div>
         <div class="keys" aria-hidden="true"></div>
       </div>
     </section>
