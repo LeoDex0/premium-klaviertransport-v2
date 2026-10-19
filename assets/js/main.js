@@ -6,7 +6,6 @@
   var body = document.body;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var desktop = window.matchMedia('(min-width: 1024px)');
-  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   // Zeit, bis das Intro den Blick freigibt (0, wenn es übersprungen wird; wie --intro im CSS)
   var introMs = doc.classList.contains('no-intro') ? 0 : 1400;
 
@@ -42,11 +41,10 @@
     var now = berlinNow();
     var today = HOURS[now.day];
     var open = !!today && now.h >= today[0] && now.h < today[1];
-    var short, long, heroText;
+    var short, long;
     if (open) {
       short = 'Jetzt erreichbar';
-      heroText = 'Jetzt telefonisch erreichbar';
-      long = 'Jetzt erreichbar · heute bis ' + today[1] + ' Uhr';
+      long = 'Jetzt erreichbar, heute bis ' + today[1] + ' Uhr';
     } else {
       var when, whenShort;
       if (today && now.h < today[0]) {
@@ -62,26 +60,20 @@
         }
       }
       short = 'Erreichbar ' + whenShort;
-      heroText = 'Online-Anfrage rund um die Uhr';
-      long = 'Wieder erreichbar ' + when;
+      long = 'Telefonisch wieder erreichbar ' + when;
     }
     $$('[data-status]').forEach(function (el) { el.classList.toggle('is-open', open); });
     $$('[data-status-text]').forEach(function (el) { el.textContent = short; });
     $$('[data-status-long]').forEach(function (el) { el.textContent = long; });
-    $$('[data-status-hero]').forEach(function (el) { el.textContent = heroText; });
   };
   updateStatus();
   setInterval(updateStatus, 60000);
 
-  /* ---------- Header: Hintergrund ab dem ersten Scrollen, Fortschritt ---------- */
+  /* ---------- Header: Schatten ab dem ersten Scrollen ---------- */
   var header = document.getElementById('header');
-  var progress = $('.progress');
   var scrollQueued = false;
   var onScroll = function () {
-    var y = window.scrollY;
-    header.classList.toggle('is-scrolled', y > 24);
-    var max = doc.scrollHeight - window.innerHeight;
-    if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    header.classList.toggle('is-scrolled', window.scrollY > 24);
     scrollQueued = false;
   };
   window.addEventListener('scroll', function () {
@@ -121,7 +113,10 @@
     var inBand = {};
     var navIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) { inBand[entry.target.id] = entry.isIntersecting; });
-      navLinks.forEach(function (a) { a.classList.toggle('is-current', !!inBand[a.getAttribute('href').slice(1)]); });
+      // nur ein Punkt aktiv: der letzte, der gerade im Band liegt
+      var current = null;
+      navLinks.forEach(function (a) { if (inBand[a.getAttribute('href').slice(1)]) current = a; });
+      navLinks.forEach(function (a) { a.classList.toggle('is-current', a === current); });
     }, { rootMargin: '-45% 0px -50% 0px' });
     navLinks.forEach(function (a) {
       var target = document.querySelector(a.getAttribute('href'));
@@ -129,86 +124,18 @@
     });
   }
 
-  /* ---------- Überschriften in Wörter zerlegen ---------- */
-  $$('.split').forEach(function (el) {
-    var n = 0;
-    var walk = function (node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
-        if (child.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          child.textContent.split(/(\s+)/).forEach(function (part) {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
-            var w = document.createElement('span');
-            w.className = 'w';
-            var inner = document.createElement('span');
-            inner.textContent = part;
-            inner.style.setProperty('--wi', n++);
-            w.appendChild(inner);
-            frag.appendChild(w);
-          });
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === 1) {
-          walk(child);
-        }
-      });
-    };
-    walk(el);
-  });
-
-  /* ---------- Zähler ---------- */
-  var countUp = function (el, delay) {
-    var target = Number(el.dataset.count);
-    if (reduced || !target) return;
-    el.textContent = '0';
-    setTimeout(function () {
-      var start = performance.now();
-      var tick = function (now) {
-        var p = Math.min((now - start) / 1400, 1);
-        el.textContent = Math.round(target * easeOut(p));
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, delay || 0);
-  };
-  var heroCount = $('.chip [data-count]');
-  if (heroCount) countUp(heroCount, introMs + 1000);
-
-  /* ---------- Einblenden beim Scrollen ---------- */
+  /* ---------- Karte erst zeichnen, wenn sie ins Bild kommt ---------- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      var shown = 0;
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        var el = entry.target._reveal || entry.target;
-        el.style.setProperty('--d', Math.min(shown++, 5) * 80 + 'ms');
-        el.classList.add('is-in');
-        $$('[data-count]', el).forEach(function (c) { countUp(c, 150); });
+        entry.target.classList.add('is-in');
         io.unobserve(entry.target);
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    // Achtung: ein per clip-path komplett beschnittenes Element gilt in Chromium nie als sichtbar –
-    // für solche Einblendungen den Elternknoten beobachten (hier gibt es keine)
-    $$('.reveal, .split').forEach(function (el) { io.observe(el); });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
   } else {
     doc.classList.add('reveal-all');
-  }
-
-  /* ---------- Hero: Lichtreflex folgt der Maus, magnetischer Button ---------- */
-  var hero = document.getElementById('hero');
-  if (hero && finePointer && !reduced) {
-    hero.addEventListener('pointermove', function (e) {
-      var r = hero.getBoundingClientRect();
-      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-    $$('.btn--magnet').forEach(function (btn) {
-      btn.addEventListener('pointermove', function (e) {
-        var r = btn.getBoundingClientRect();
-        btn.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .18).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * .3).toFixed(1) + 'px)';
-      });
-      btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
-    });
   }
 
   /* ---------- Spielbare Klaviatur ---------- */
@@ -493,24 +420,6 @@
     if (reduced) clock = DUR[0] * .97;
     setPlaying(playing);
     draw();
-  }
-
-  /* ---------- Vorteile: Foto mit leichter Parallaxe ---------- */
-  var whyImg = $('.why__photo img');
-  if (whyImg && !reduced) {
-    var whyQueued = false;
-    var moveWhy = function () {
-      var r = whyImg.parentElement.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < window.innerHeight) {
-        var p = (r.top + r.height / 2) / (window.innerHeight + r.height);
-        whyImg.style.transform = 'translateY(' + (-(1 - p) * 12).toFixed(2) + '%)';
-      }
-      whyQueued = false;
-    };
-    window.addEventListener('scroll', function () {
-      if (!whyQueued) { whyQueued = true; requestAnimationFrame(moveWhy); }
-    }, { passive: true });
-    requestAnimationFrame(moveWhy);
   }
 
   /* ---------- Galerie: Fortschritt, Pfeile, Ziehen mit der Maus, Bildansicht ---------- */
