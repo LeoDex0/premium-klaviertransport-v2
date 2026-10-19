@@ -1,0 +1,11 @@
+{
+  "name": "premium-klaviertransport-v2",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build.js",
+    "start": "node tools/serve.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12"
+  }
+}
